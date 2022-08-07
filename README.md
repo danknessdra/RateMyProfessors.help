@@ -4,11 +4,15 @@ name not finalized
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
-[go lang](https://go.dev/learn/)
+## resources 
 
-[python](https://docs.python.org/3/)
+frontend: [ html, css, javascript ]
 
-[relayd](https://man.openbsd.org/relayd.8)
+backend: [go lang](https://go.dev/learn/)
+
+webscraping: [python](https://docs.python.org/3/)
+
+reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
 
 # dependencies
 
