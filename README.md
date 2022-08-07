@@ -8,6 +8,7 @@ name not finalized
 - [ ] webscraping
 - [ ] backend
 - [ ] frontend
+- [ ] git ( change branches for release/dev )
 
 ## resources 
 
