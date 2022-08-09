@@ -4,3 +4,7 @@ import (
 	"log"
 	"net/http"
 )
+
+func main() {
+	return 0
+}
