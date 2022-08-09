@@ -1,19 +1,9 @@
 package main
-import (
-    "fmt"
-    "log"
-    "net/http"
-)
-func main() {
-	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fs)
 
-	log.Print("Listening on :3000...")
-	err := http.ListenAndServe(":3000", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-}
+import (
+	"net/http"
+	"fmt"
+)
 
 type node struct {
 	Course		string `json:"course"`
@@ -30,6 +20,8 @@ for i in range(0,6):
 	print("\{Course : \"{0}\", Professor : \"{1}\", Rating : \"{2}\"".format(courses[i], professors[i], rating[i]))
 }
 
+func main() {
+}
 /*
 for i in range(0,3):
 	courses = ["Math", "Physics", "English", "Chemistry", "History", "PE" ]
