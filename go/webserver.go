@@ -1,10 +1,5 @@
 package main
 
-import (
-	"log"
-	"net/http"
-)
-
 func main() {
-	return 0
+	return
 }
