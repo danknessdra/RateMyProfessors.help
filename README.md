@@ -1,4 +1,4 @@
-# college course calculator
+# prof course finder
 
 name not finalized
 
