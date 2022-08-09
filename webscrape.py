@@ -11,4 +11,11 @@ soup = BeautifulSoup(math.content,'html.parser')
 #print(math)
 #print(math.content)
 
-print(soup.prettify())
+#print(soup.prettify())
+
+
+for a in soup.find_all('a'):
+    course = a.get('data-content')
+
+    if course != None:
+        print(course)
