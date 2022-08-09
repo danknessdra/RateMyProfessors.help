@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"html/template"
 	"log"
@@ -14,13 +13,10 @@ type Page struct {
 	Body  []byte
 }
 
-
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
 	return os.WriteFile(filename, p.Body, 0600)
-
 }
-
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
@@ -31,9 +27,12 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-
+// what this does is load a page into to var p and have an error if no page
+// if there is an error, redirect to edit so it can edit a file (nil means no error)
+// we probs dont need it, probs redirect all trafic to home page anyway
 func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
+
 	if err != nil {
 		http.Redirect(w, r, "/edit/"+title, http.StatusFound)
 		return
@@ -41,7 +40,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	renderTemplate(w, "view", p)
 }
 
-
+/*
 func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 	if err != nil {
@@ -60,8 +59,9 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 	}
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
+*/
 
-var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+var templates = template.Must(template.ParseFiles("view.html"))
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	err := templates.ExecuteTemplate(w, tmpl+".html", p)
@@ -69,7 +69,6 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-
 
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
@@ -86,15 +85,15 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 
 func main() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
-	http.HandleFunc("/edit/", makeHandler(editHandler))
-	http.HandleFunc("/save/", makeHandler(saveHandler))
+	//http.HandleFunc("/edit/", makeHandler(editHandler))
+	//http.HandleFunc("/save/", makeHandler(saveHandler))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 type node struct {
-	Course		string `json:"course"`
-	Professor	string `json:"prof"`
-	Rating		float32 `json:"rating"`
+	Course    string  `json:"course"`
+	Professor string  `json:"prof"`
+	Rating    float32 `json:"rating"`
 }
 
 /*
@@ -113,7 +112,6 @@ for i in range(0,6):
 	courses = ["Math", "Physics", "English", "Chemistry", "History", "PE" ]
 	professors = ["jeff", "saul", "white", "jesse", "raymond", "bhat"]
 	rating = [3.2, 3.4, 4.6, 4.2, 5, 0.0]
-	
+
 	print("\t{{Course : \"{0}\", Professor : \"{1}\", Rating : \"{2}\"}},".format(courses[i], professors[i], rating[i]))
 */
-
