@@ -28,5 +28,5 @@ reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
 
 ## python dependencies
 
-`pip install requests beautifulsoup4 RateMyProfessorAPI`
+`pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI`
 
