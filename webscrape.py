@@ -13,12 +13,13 @@ import ratemyprofessor
 
 # csv file
 file = "courses.csv"
+
+fields = [ 'Department', 'Course', 'Professor', 'Rating' ]
 with open(file, 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
 
     csvwriter.writerow(fields)
 
-fields = [ 'Department', 'Course', 'Professor', 'Rating' ]
 
 
 # http request
