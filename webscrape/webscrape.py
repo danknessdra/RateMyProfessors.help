@@ -14,7 +14,6 @@ import ratemyprofessor
 json_file = open('courses.json', 'w')
 departments = open('departments.txt', 'r').read().splitlines()
 
-
 for department in departments:
     url = 'https://www.deanza.edu/schedule/listings.html?dept='+department+'&t=F2022'
     #print(url)
@@ -24,7 +23,7 @@ for department in departments:
 
     # parse html
     soup = BeautifulSoup(request.content,'html.parser')
-    #dict = {}
+    dict = {}
 
     for tr in soup.find_all('tr'):
         '''
@@ -58,7 +57,7 @@ for department in departments:
 
         if course and prof:
             json.dump({'department': department, 'course': course, 'prof': prof}, json_file, sort_keys=True, indent=4)
-            print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
+            #print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
     #print(dict)
     
 json_file.close()
