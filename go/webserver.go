@@ -34,7 +34,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage("homepage")
 
 	if err != nil {
-		http.Redirect(w, r, "/home/"+title, http.StatusFound)
+		http.Redirect(w, r, "/home/", http.StatusFound)
 		return
 	}
 	renderTemplate(w, "view", p)
