@@ -26,6 +26,12 @@ reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
 - python
 - python-pip3
 
+## go dependencies
+
+go get github.com/julienschmidt/httprouter
+
+[http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
+
 ## python dependencies
 
 `pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI`
