@@ -55,10 +55,9 @@ for department in departments:
         '''
 
 
-    if course and prof:
-        json.dump({'department': department, 'course': course, 'prof': prof}, json_file ,sort_keys=True, indent=4)
-
-        print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
+        if course and prof:
+            json.dump({'department': department, 'course': course, 'prof': prof}, json_file, sort_keys=True, indent=4)
+            #print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
     #print(dict)
     
 json_file.close()
