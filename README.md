@@ -4,13 +4,9 @@ name not finalized
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
-# TODO
-- [ ] webscraping
-- [ ] backend
-- [ ] frontend
-- [ ] git ( change branches for release/dev )
+# git workflow
 
-## resources 
+# resources 
 
 frontend: [ html, css, javascript ]
 
