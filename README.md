@@ -32,3 +32,6 @@ go get github.com/julienschmidt/httprouter
 
 `pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI`
 
+## openbsd additions
+ln -s '/usr/local/bin/python3' '/bin/python3'
+
