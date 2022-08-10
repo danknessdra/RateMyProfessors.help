@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 import json
 import ratemyprofessor
 
+school = ratemyprofessor.get_school_by_name("De Anza College")
+
 json_file = open('courses.json', 'w')
 departments = open('departments.txt', 'r').read().splitlines()
 
@@ -56,7 +58,13 @@ for department in departments:
 
 
         if course and prof:
-            json.dump({'department': department, 'course': course, 'prof': prof}, json_file, sort_keys=True, indent=4)
+            professor = ratemyprofessor.get_professor_by_school_and_name(school,prof)
+            if professor is not None:
+                print("professor: {0}".format(professor.name))
+                print("rating: {0}".format(professor.rating))
+                print("difficulty: {0}".format(professor.difficulty))
+                print("num of rating: {0}".format(professor.num_ratings))
+                json.dump({'department': department, 'course': course, 'prof': prof, 'rating': professor.rating, 'size' : professor.num_ratings, 'difficulty' : professor.difficulty }, json_file, sort_keys=True, indent=4)
             #print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
     #print(dict)
     
@@ -79,4 +87,22 @@ json_file.close()
 
     if prof != None:
         print(prof)
+'''
+
+'''
+if professor is not None:
+    print("professor: {0}".format(professor.name))
+    print("rating: {0}".format(professor.rating))
+    print("difficulty: {0}".format(professor.difficulty))
+    print("num of rating: {0}".format(professor.num_ratings))
+'''
+'''
+    print("%sworks in the %s Department of %s." % (professor.name, professor.department, professor.school.name))
+    print("Rating: %s / 5.0" % professor.rating)
+    print("Difficulty: %s / 5.0" % professor.difficulty)
+    print("Total Ratings: %s" % professor.num_ratings)
+    if professor.would_take_again is not None:
+        print(("Would Take Again: %s" % round(professor.would_take_again, 1)) + '%')
+    else:
+        print("Would Take Again: N/A")
 '''
