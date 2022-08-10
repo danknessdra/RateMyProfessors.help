@@ -5,6 +5,9 @@ name not finalized
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
 # git workflow
+1. create issue for problem working on
+2. create branch based off issue(s)
+3. create pull request, code review if necessary
 
 # resources 
 
