@@ -95,7 +95,7 @@ for department in departments:
 # without a huge run time
 
 courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
-json.dump({"courses": courses}, json_file, sort_keys=True, indent=4)
+json.dump({"courses": courses}, json_file, sort_keys=True, indent=2)
 
 json_file.close()
 
