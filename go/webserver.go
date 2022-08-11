@@ -21,6 +21,7 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func main() {
+
 	jsonFile, err := os.Open("../data/courses.json")
 
 	if err != nil {
@@ -45,7 +46,7 @@ func main() {
 	var courses Courses
 
 	// we unmarshal our byteArray which contains our
-	// jsonFile's content into 'courses' which we defined above
+	// jsonFile's content into 'course' which we defined above
 	json.Unmarshal(byteValue, &courses)
 
 	// we iterate through every user within our users array and
@@ -62,6 +63,13 @@ func main() {
 
 		// kinda/kinda dont fully understand format float, but hopefully it means no exp, and truncate to only 1 place
 		fmt.Println("Rating: " + strconv.FormatFloat(courses.Courses[i].Rating, 'f', 1, 32))
+	}
+
+	// returns distance, [src, destination]
+	best, err := Graph().Longest(0, 2)
+	fmt.Println(best)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	router := httprouter.New()
