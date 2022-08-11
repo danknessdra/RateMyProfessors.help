@@ -87,6 +87,13 @@ for department in departments:
     
 # remove duplicate courses
 
+# we should convert this so it does updates instead of overwriting each time
+# script takes too long to run
+# if having to run again, risks losing data
+# also requesting data from API is quite slow, maybe we can collaborate with rate my professors
+# converting based off a database model: still questions, how do we check if entry is there
+# without a huge run time
+
 courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
 json.dump({"courses": courses}, json_file, sort_keys=True, indent=4)
 
