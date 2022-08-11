@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
 body {
-	color: red
+	font-family: 'Poppins', sans-serif;
 }
+input[type=school], input[type=subject], select {
+	margin-top: 10px;
+	border:1px solid #9a9898;
+	padding: 10px;
+	border-radius:10px;
+	text-align: left;
+  }
+  input[type=submit] {
+	margin-top: 15px;
+	border: none;
+	padding: 7px;
+	border-radius:10px;
+	color: white;
+	background-color: #0055FD;
+	transition: all ease-in-out .5s;
+  }
+  
+  input[type=submit]:hover {
+	background-color: #0021FF;
+	cursor: pointer;
+  }
+  .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+  }
+  .container {
+	display: flex;
+	justify-content: center;
+
+  }
+
