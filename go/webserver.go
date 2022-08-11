@@ -27,8 +27,6 @@ func main() {
 		fmt.Println(err)
 	}
 
-	// User struct which contains a name
-	// a type and a list of social links
 	type Course struct {
 		Course     string  `json:"course"`
 		Department string  `json:"department"`
@@ -40,13 +38,14 @@ func main() {
 		Courses []Course `json:"courses"`
 	}
 
+	// research what ioutil.ReadALL does
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	// we initialize our Users array
+	// courses var that is the struct Courses( which is a list of course structs )
 	var courses Courses
 
 	// we unmarshal our byteArray which contains our
-	// jsonFile's content into 'users' which we defined above
+	// jsonFile's content into 'courses' which we defined above
 	json.Unmarshal(byteValue, &courses)
 
 	// we iterate through every user within our users array and
@@ -54,7 +53,6 @@ func main() {
 	// as just an example
 
 	count := 0
-
 	for i := 0; i < len(courses.Courses); i++ {
 		count += 1
 		fmt.Println(count)
