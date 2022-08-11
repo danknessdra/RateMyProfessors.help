@@ -13,8 +13,13 @@ import ratemyprofessor
 
 school = ratemyprofessor.get_school_by_name("De Anza College")
 
-json_file = open('courses.json', 'w')
-departments = open('departments.txt', 'r').read().splitlines()
+json_file = open('../data/courses.json', 'w')
+departments = open('../data/departments.txt', 'r').read().splitlines()
+
+
+courses = []
+count = 0 # for counting num of teachers gone through
+
 
 for department in departments:
     url = 'https://www.deanza.edu/schedule/listings.html?dept='+department+'&t=F2022'
@@ -25,7 +30,6 @@ for department in departments:
 
     # parse html
     soup = BeautifulSoup(request.content,'html.parser')
-    dict = {}
 
     for tr in soup.find_all('tr'):
         '''
@@ -35,7 +39,6 @@ for department in departments:
         #print(tr.get_text())
         '''
         
-
         list = tr.get_text().split()
         
         # https://stackoverflow.com/questions/58146077/how-to-add-href-contains-condition-in-beautifulsoup
@@ -56,20 +59,42 @@ for department in departments:
             dict[course] = prof
         '''
 
+        dictionary = {}
 
+        # trying to remove duplicate entries: and (dict.get(course) == prof in courses
         if course and prof:
             professor = ratemyprofessor.get_professor_by_school_and_name(school,prof)
             if professor is not None:
-                print("professor: {0}".format(professor.name))
-                print("rating: {0}".format(professor.rating))
-                print("difficulty: {0}".format(professor.difficulty))
-                print("num of rating: {0}".format(professor.num_ratings))
-                json.dump({'department': department, 'course': course, 'prof': prof, 'rating': professor.rating, 'size' : professor.num_ratings, 'difficulty' : professor.difficulty }, json_file, sort_keys=True, indent=4)
+                count = count + 1
+                print("{0} professor: {1}".format(count, professor.name))
+                #print("rating: {0}".format(professor.rating))
+                #print("difficulty: {0}".format(professor.difficulty))
+                #print("num of rating: {0}".format(professor.num_ratings))
+                dictionary['department'] = department
+                dictionary['course'] = course
+                dictionary['prof'] = prof
+                dictionary['rating'] = professor.rating
+                dictionary['size'] = professor.num_ratings
+                dictionary['difficulty'] = professor.difficulty
+                courses.append(dictionary)
+            else:
+                print("N/A for {0} {1}".format(course, prof))
+
+        #print(courses)
+
             #print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
     #print(dict)
     
+# remove duplicate courses
+
+courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
+json.dump({"courses": courses}, json_file, sort_keys=True, indent=4)
+
 json_file.close()
 
+print("FINISHED")
+print("FINISHED")
+print("FINISHED")
 
 
 '''
