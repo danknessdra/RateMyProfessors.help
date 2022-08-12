@@ -28,6 +28,7 @@ reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
 ## go dependencies
 
 go get github.com/julienschmidt/httprouter
+go get github.com/RyanCarrier/dijkstra
 
 [http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
