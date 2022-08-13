@@ -36,7 +36,7 @@ ln -s '/usr/local/bin/python3' '/bin/python3'
 
 pkg_add python3
 
-// need the ports tree to install
+# need the ports tree to install
 cd /usr/ports/lang/go/
 make install clean
 
@@ -49,7 +49,7 @@ make install clean
 2. create branch based off issue(s)
 3. create pull request, code review if necessary
 
-# resources 
+# technology stack
 
 frontend: [ html, css, javascript ]
 
