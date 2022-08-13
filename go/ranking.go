@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 	"sort"
 	"strconv"
@@ -27,6 +27,8 @@ func (course Course) Format(f fmt.State, c rune) {
 	f.Write([]byte(course.Department + "\n"))
 	f.Write([]byte(course.Course + "\n"))
 	f.Write([]byte(course.Prof + "\n"))
+
+	// kinda/kinda dont fully understand format float, but hopefully it means no exp, and truncate to only 1 place
 	f.Write([]byte(strconv.FormatFloat(course.Rating, 'f', 1, 32) + "\n"))
 	f.Write([]byte(strconv.Itoa(course.Size) + "\n"))
 }
@@ -49,7 +51,7 @@ func GetJson(file string) []Course {
 	}
 
 	// research what ioutil.ReadALL does
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	byteValue, _ := io.ReadAll(jsonFile)
 
 	// courses var that is the struct Courses( which is a list of course structs )
 	var courses []Course
@@ -74,20 +76,17 @@ func (a ByRanking) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 // make it rank if ranks are equal, compare number of ratins
 func (a ByRanking) Less(i, j int) bool { return a[i].Rating < a[j].Rating }
 
-func GetRanked(courses []Course) []Course {
+func GetRanked(courses []Course, input string) []Course {
 	sort.Sort(ByRanking(courses))
 
 	var ranked []Course
 	for i := 0; i < len(courses); i++ {
-		if strings.Compare(courses[i].Course, "MATH 1B") == 0 {
+		if strings.Compare(courses[i].Course, input) == 0 {
 			ranked = append(ranked, courses[i])
 			//fmt.Println(courses[i])
 		}
-		// kinda/kinda dont fully understand format float, but hopefully it means no exp, and truncate to only 1 place
 	}
 
 	sort.Sort(ByRanking(ranked))
-
-	fmt.Println(ranked)
 	return ranked
 }
