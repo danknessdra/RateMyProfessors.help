@@ -5,8 +5,6 @@
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
-
-
 # dependencies
 
 - [golang](https://go.dev/)
@@ -30,11 +28,20 @@ pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI
 # deployment 
 
 ## openbsd 
+
+[openbsd ports tree](https://www.openbsd.org/faq/ports/ports.html)
+
 ```
 ln -s '/usr/local/bin/python3' '/bin/python3'
 
-pkg_add go
 pkg_add python3
+
+// need the ports tree to install
+cd /usr/ports/lang/go/
+make install clean
+
+cd /usr/ports/devel/py-pip/
+make install clean
 ```
 
 # development workflow
