@@ -18,7 +18,8 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func main() {
 
-	GetRanked(GetJson("../data/courses.json"))
+	ranked := GetRanked(GetJson("../data/courses.json"), "MATH 1B")
+	fmt.Println(ranked)
 
 	router := httprouter.New()
 	// Index needs to be a handler, idk if ServeFile is a handler
