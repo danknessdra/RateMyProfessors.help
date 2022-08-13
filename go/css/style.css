@@ -27,6 +27,7 @@ input[type=school], input[type=subject], select {
   .box {
 	display: flex;
 	flex-direction:column;
+	position: relative;
 
   }
   section {

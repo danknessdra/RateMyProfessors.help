@@ -1,10 +1,10 @@
 
 
 const Banner = () => {
-    return (  <section class="hero is-small has-text-centered black has-text-white round">
+    return (  <section class="hero is-large-touch has-text-centered black has-text-white round">
     <div class="hero-body">
-      <p class="title white">ratemyprofessors.help</p>
-      <p class="subtitle white">
+      <p class="title is-4 white">ratemyprofessors.help</p>
+      <p class="subtitle is-5 white">
         A Rate My Professors Helper!
       </p>
     </div>
@@ -13,8 +13,8 @@ const Banner = () => {
 const Form = () => {
                     return( 
                       <section class="columns is-mobile is-centered">
-                        <div class="column is-one-quarter">
-                    <section class = "box ">
+                        <div class="column is-one-quarter-desktop is-one-half-tablet">
+                    <section class = "box">
                        <select name="school" id="school">
                         <option class="select-school" value="" disabled selected>Select School</option>
                         <option value="De Anza">De Anza</option>
