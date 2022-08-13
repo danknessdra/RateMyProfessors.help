@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins');
-body {
+html {
 	font-family: 'Poppins', sans-serif;
+	background-color: #5186ef;
 }
 input[type=school], input[type=subject], select {
 	margin-top: 10px;
@@ -23,15 +24,21 @@ input[type=school], input[type=subject], select {
 	background-color: #0021FF;
 	cursor: pointer;
   }
-  .card {
+  .box {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 200px;
-  }
-  .container {
-	display: flex;
-	justify-content: center;
+	flex-direction:column;
+	position: relative;
 
   }
-
+  section {
+	margin: 40px;
+  }
+.black {
+	background-color: black;
+}
+.white {
+	color: white;
+}
+.round {
+	border-radius: 20px;
+}
