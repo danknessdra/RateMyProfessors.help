@@ -10,6 +10,28 @@ import (
 	"strings"
 )
 
+// return ranking of courses based off school, and course name
+
+// first return courses that contain course name
+
+type Course struct {
+	Department string  `json:"department"`
+	Course     string  `json:"course"`
+	Prof       string  `json:"prof"`
+	Rating     float64 `json:"rating"`
+	Size       int     `json:"size"`
+}
+
+// custom print function
+func (course Course) Format(f fmt.State, c rune) {
+	f.Write([]byte(course.Department + "\n"))
+	f.Write([]byte(course.Course + "\n"))
+	f.Write([]byte(course.Prof + "\n"))
+	f.Write([]byte(strconv.FormatFloat(course.Rating, 'f', 1, 32) + "\n"))
+	f.Write([]byte(strconv.Itoa(course.Size) + "\n"))
+}
+
+// file =../data/courses.json
 /*
 error handling
 
@@ -18,42 +40,6 @@ os.open school json
 if err != nil
 return N/A to webserver
 */
-
-// return ranking of courses based off school, and course name
-
-// first return courses that contain course name
-
-type Course struct {
-	Course     string  `json:"course"`
-	Department string  `json:"department"`
-	Prof       string  `json:"prof"`
-	Rating     float64 `json:"rating"`
-	Size       int     `json:"size"`
-}
-
-/*
-type Courses struct {
-	Courses []Course `json:"courses"`
-}
-*/
-
-type ByRanking []Course
-
-func (a ByRanking) Len() int           { return len(a) }
-func (a ByRanking) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a ByRanking) Less(i, j int) bool { return a[i].Rating < a[j].Rating }
-
-// custom print function
-
-func (course Course) Format(f fmt.State, c rune) {
-	f.Write([]byte(course.Course + "\n"))
-	f.Write([]byte(course.Department + "\n"))
-	f.Write([]byte(course.Prof + "\n"))
-	f.Write([]byte(strconv.FormatFloat(course.Rating, 'f', 1, 32) + "\n"))
-	f.Write([]byte(strconv.Itoa(course.Size)))
-}
-
-// file =../data/courses.json
 func GetJson(file string) []Course {
 
 	jsonFile, err := os.Open(file)
@@ -80,17 +66,28 @@ func GetJson(file string) []Course {
 	return courses
 }
 
-func GetCourse(courses []Course) {
+type ByRanking []Course
+
+func (a ByRanking) Len() int      { return len(a) }
+func (a ByRanking) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+
+// make it rank if ranks are equal, compare number of ratins
+func (a ByRanking) Less(i, j int) bool { return a[i].Rating < a[j].Rating }
+
+func GetRanked(courses []Course) []Course {
 	sort.Sort(ByRanking(courses))
 
-	fmt.Println("Department: " + courses[0].Department)
-
+	var ranked []Course
 	for i := 0; i < len(courses); i++ {
-		var unranked []Course
-		if strings.Compare(courses[i].Course, "MATH 1A") == 0 {
-			unranked = append(unranked, courses[i])
-			fmt.Println(courses[i])
+		if strings.Compare(courses[i].Course, "MATH 1B") == 0 {
+			ranked = append(ranked, courses[i])
+			//fmt.Println(courses[i])
 		}
 		// kinda/kinda dont fully understand format float, but hopefully it means no exp, and truncate to only 1 place
 	}
+
+	sort.Sort(ByRanking(ranked))
+
+	fmt.Println(ranked)
+	return ranked
 }
