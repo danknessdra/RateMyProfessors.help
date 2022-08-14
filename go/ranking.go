@@ -74,7 +74,8 @@ func (a ByRanking) Len() int      { return len(a) }
 func (a ByRanking) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 // make it rank if ranks are equal, compare number of ratins
-func (a ByRanking) Less(i, j int) bool { return a[i].Rating < a[j].Rating }
+//
+func (a ByRanking) Less(i, j int) bool { return a[i].Rating > a[j].Rating }
 
 func GetRanked(courses []Course, input string) []Course {
 	sort.Sort(ByRanking(courses))
