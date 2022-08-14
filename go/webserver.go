@@ -9,12 +9,6 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-
-
-func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
-}
-
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	http.ServeFile(w, r, "html/index.html")
 }
@@ -27,6 +21,7 @@ func main() {
 	router.ServeFiles("/css/*filepath", http.Dir("css"))
 
 	router.POST("/get_rank", getRank)
+	router.GET("/get_courses", getCourses)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
@@ -38,12 +33,18 @@ func getRank(writer http.ResponseWriter, request *http.Request, params httproute
 		return
 	}
 	ranked := GetRanked(GetJson("../data/courses.json"), data.Course)
-   	writer.Header().Set("Content-Type", "application/json")
-   	_ = json.NewEncoder(writer).Encode(ranked)
+	writer.Header().Set("Content-Type", "application/json")
+	_ = json.NewEncoder(writer).Encode(ranked)
+}
+
+func getCourses(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
+	ranked := GetJson("../data/courses.json")
+	writer.Header().Set("Content-Type", "application/json")
+	writer.WriteHeader(http.StatusCreated)
+	_ = json.NewEncoder(writer).Encode(ranked)
 }
 
 type InputCall struct {
 	School string
 	Course string
 }
-
