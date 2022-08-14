@@ -4,9 +4,14 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
+	"github.com/julienschmidt/sse"
 	"github.com/julienschmidt/httprouter"
 )
+
+type InputtedResponse struct {
+	School string
+	Course string
+ }
 
 func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
@@ -18,9 +23,6 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func main() {
 
-	ranked := GetRanked(GetJson("../data/courses.json"), "MATH 1B")
-	fmt.Println(ranked)
-
 	router := httprouter.New()
 	// Index needs to be a handler, idk if ServeFile is a handler
 	router.GET("/", Index)
@@ -29,7 +31,27 @@ func main() {
 	router.ServeFiles("/css/*filepath", http.Dir("css"))
 
 	log.Fatal(http.ListenAndServe(":8080", router))
+	input := sse.New()
+		
+	router.POST("/rank", getRank)
+	// ranked := GetRanked(GetJson("../data/courses.json"), "MATH 1B")
+	// fmt.Println(ranked)
+		
+	router.Handler("GET", "/time", timer)
+	go streamTime(timer)
 }
+func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
+	var data InputtedResponse
+	ranked := GetRanked(GetJson("../data/courses.json"), data.Course)
+	err := json.NewDecoder(request.Body).Decode(&data)
+	if err != nil {
+	   fmt.Println(err.Error())
+	   return
+	}
+	fmt.Println(data.Course)
+	fmt.Println(data.School)
+ }
+
 
 /*
 type node struct {

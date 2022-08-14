@@ -28,7 +28,25 @@ class Form extends React.Component {
 
 
   handleSubmit(event) {
-    alert(this.state.school+" "+this.state.course);
+    let data = {
+        School: this.state.school,
+        Course: this.state.course,
+    };
+    fetch("/get_time", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+    }).then((response) => {
+        response.text().then(function (data) {
+            let result = JSON.parse(data);
+            console.log(result)
+        });
+    }).catch((error) => {
+        console.log(error)
+    });
     event.preventDefault();
   }
 
