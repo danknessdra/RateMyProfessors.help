@@ -21,9 +21,9 @@ func main() {
 	router.ServeFiles("/css/*filepath", http.Dir("css"))
 
 	router.POST("/get_rank", getRank)
-	router.GET("/get_courses", getCourses)
+	// router.GET("/get_courses", getCourses) API
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", router))
 }
 
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
