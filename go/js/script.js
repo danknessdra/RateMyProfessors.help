@@ -5,7 +5,7 @@ const Banner = () => {
     <div class="hero-body">
       <p class="title is-4 white">ratemyprofessors.help</p>
       <p class="subtitle is-5 white">
-        A Rate My Professors Helper!
+        A Rate My Professors Helper! beta
       </p>
     </div>
   </section>);
@@ -42,7 +42,37 @@ class Form extends React.Component {
     }).then((response) => {
         response.text().then(function (data) {
             let result = JSON.parse(data);
-            console.log(result)
+            console.log(result);
+            let title = result[0].course;
+            let htmlString = '';
+            for (let i = 0; i<result.length;++i) {
+                htmlString+= `<section class = "box">
+                <div class="newResult">
+                  <div class = "title is-5">${result[i].prof}</div>
+                  <div>
+                    <div class = "title is-2">${result[i].rating}</div>
+                    <div class = "subtitle is-6">${result[i].size} Ratings</div>
+                  </div>
+                </div>
+                </div>
+                </section>`
+            }
+            Swal.fire({
+              title: "<strong>"+result[0].course+"<\strong>",
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              },
+              html: htmlString,
+              showCloseButton: true,
+              focusConfirm: false,
+              confirmButtonColor: '#5186ef',
+              confirmButtonText:
+                'Ok!',
+              confirmButtonAriaLabel: 'Thumbs up, great!',
+            })
         });
     }).catch((error) => {
         console.log(error)

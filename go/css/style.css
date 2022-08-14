@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins');
 html {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins', sans-serif !important;
 	background-color: #5186ef;
 }
 input[type=school], input[type=subject], select {
@@ -42,3 +42,10 @@ input[type=school], input[type=subject], select {
 .round {
 	border-radius: 20px;
 }
+.color {
+	background-color: #5186ef;
+}
+.newResult {
+	display: flex;
+	justify-content: space-between;
+  }
