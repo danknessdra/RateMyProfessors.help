@@ -22,6 +22,7 @@ func main() {
 
 	router.POST("/get_rank", getRank)
 	router.GET("/get_courses", getCourses)
+
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 

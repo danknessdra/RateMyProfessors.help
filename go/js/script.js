@@ -1,14 +1,15 @@
 
 
 const Banner = () => {
-    return (  <section class="hero is-large-touch has-text-centered black has-text-white round">
+    return (  
+    <section class="hero is-large-touch has-text-centered black has-text-white round">
     <div class="hero-body">
       <p class="title is-4 white">ratemyprofessors.help</p>
       <p class="subtitle is-5 white">
         A Rate My Professors Helper! beta
       </p>
     </div>
-  </section>);
+    </section>);
 };
 class Form extends React.Component {
   constructor(props) {
@@ -103,4 +104,3 @@ class Form extends React.Component {
 
 ReactDOM.render(<Banner />, document.getElementById("home"));
 ReactDOM.render(<Form />, document.getElementById("form"));
-
