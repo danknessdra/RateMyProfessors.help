@@ -1,17 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"github.com/julienschmidt/sse"
+
 	"github.com/julienschmidt/httprouter"
 )
 
 type InputtedResponse struct {
 	School string
 	Course string
- }
+}
 
 func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
@@ -30,28 +31,30 @@ func main() {
 	router.ServeFiles("/js/*filepath", http.Dir("js"))
 	router.ServeFiles("/css/*filepath", http.Dir("css"))
 
-	log.Fatal(http.ListenAndServe(":8080", router))
-	input := sse.New()
-		
-	router.POST("/rank", getRank)
+	router.POST("/get_rank", getRank)
+
 	// ranked := GetRanked(GetJson("../data/courses.json"), "MATH 1B")
 	// fmt.Println(ranked)
-		
-	router.Handler("GET", "/time", timer)
-	go streamTime(timer)
+
+	/*
+		router.Handler("GET", "/time", timer)
+		go streamTime(timer)
+	*/
+
+	// requests should be BEFORE this line
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
+
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	var data InputtedResponse
-	ranked := GetRanked(GetJson("../data/courses.json"), data.Course)
 	err := json.NewDecoder(request.Body).Decode(&data)
 	if err != nil {
-	   fmt.Println(err.Error())
-	   return
+		fmt.Println(err.Error())
+		return
 	}
-	fmt.Println(data.Course)
 	fmt.Println(data.School)
- }
-
+	fmt.Println(data.Course)
+}
 
 /*
 type node struct {

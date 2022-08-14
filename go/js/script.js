@@ -32,7 +32,7 @@ class Form extends React.Component {
         School: this.state.school,
         Course: this.state.course,
     };
-    fetch("/get_time", {
+    fetch("/get_rank", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
