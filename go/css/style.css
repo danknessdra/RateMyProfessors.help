@@ -3,6 +3,9 @@ html {
 	font-family: 'Poppins', sans-serif !important;
 	background-color: #5186ef;
 }
+body {
+	min-height: 100%;
+}
 input[type=school], input[type=subject], select {
 	margin-top: 10px;
 	border:1px solid #9a9898;
