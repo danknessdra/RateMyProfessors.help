@@ -104,7 +104,7 @@ const Footer = () => {
     <div className="black footer1">
       <div className="content has-text-centered">
         <p>
-          ratemyprofessors.help by Duy Nguyen and Raymond Lin. This source code is licensed under the
+          ratemyprofessors.help by Duy Nguyen and Raymond Lin. The source code is licensed under the
            MIT license.
         </p>
       </div>
