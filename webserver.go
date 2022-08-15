@@ -33,13 +33,13 @@ func getRank(writer http.ResponseWriter, request *http.Request, params httproute
 		fmt.Println(err.Error())
 		return
 	}
-	ranked := GetRanked(GetJson("../data/courses.json"), data.Course)
+	ranked := GetRanked(GetJson("./data/courses.json"), data.Course)
 	writer.Header().Set("Content-Type", "application/json")
 	_ = json.NewEncoder(writer).Encode(ranked)
 }
 
 func getCourses(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
-	ranked := GetJson("../data/courses.json")
+	ranked := GetJson("./data/courses.json")
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(http.StatusCreated)
 	_ = json.NewEncoder(writer).Encode(ranked)
