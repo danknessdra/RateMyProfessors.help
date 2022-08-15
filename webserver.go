@@ -23,7 +23,9 @@ func main() {
 	router.POST("/get_rank", getRank)
 	// router.GET("/get_courses", getCourses) API
 
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", router))
+	log.Fatal(http.ListenAndServe("127.0.0.1:8080", router))
+	// log.Fatal(http.ListenAndServeTLS("127.0.0.1:8080", "ratemyprofessor.crt", "ratemyprofessor.key", router))
+
 }
 
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -33,13 +35,13 @@ func getRank(writer http.ResponseWriter, request *http.Request, params httproute
 		fmt.Println(err.Error())
 		return
 	}
-	ranked := GetRanked(GetJson("../data/courses.json"), data.Course)
+	ranked := GetRanked(GetJson("./data/courses.json"), data.Course)
 	writer.Header().Set("Content-Type", "application/json")
 	_ = json.NewEncoder(writer).Encode(ranked)
 }
 
 func getCourses(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
-	ranked := GetJson("../data/courses.json")
+	ranked := GetJson("./data/courses.json")
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(http.StatusCreated)
 	_ = json.NewEncoder(writer).Encode(ranked)
