@@ -5,13 +5,14 @@
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
-# development dependencies
+# dependencies
 
 - [golang](https://go.dev/)
 - [python](https://www.python.org/)
 - [python pip](https://github.com/pypa/pip)
 
-## openbsd dependencies
+## OS dependencies 
+### openbsd 
 
 [openbsd ports tree](https://www.openbsd.org/faq/ports/ports.html)
 ```
@@ -25,9 +26,10 @@ cd /usr/ports/lang/go/
 make install clean
 ```
 
-## ubuntu dependencies
+### ubuntu 
 
-> Ubuntus go lang package is outdated
+> Ubuntus go lang package is outdated, follow go lang website instructions
+
 [go lang install](https://tip.golang.org/doc/install)
 
 ```
@@ -79,3 +81,5 @@ backend: [go lang](https://go.dev/learn/)
 webscraping: [python](https://docs.python.org/3/)
 
 reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
+
+tls: [acme-client](https://man.openbsd.org/acme-client.1)
