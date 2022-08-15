@@ -39,11 +39,11 @@ sudo apt-get install python3 python3-pip
 
 ## go dependencies
 
+[http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
+
 ```
 go get github.com/julienschmidt/httprouter
 ```
-
-[http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
 ## python dependencies
 
@@ -74,7 +74,7 @@ make install clean
 
 # technology stack
 
-frontend: [ html, css, javascript ]
+frontend: [ *html*, *css*, *javascript* ]
 
 backend: [go lang](https://go.dev/learn/)
 
