@@ -74,7 +74,7 @@ make install clean
 # technology stack
 
 frontend : [ __html__, __css__ , __javascript__ ]
-- [reactjs](https://reactjs.org/docs/)
+- [__reactjs__](https://reactjs.org/docs/)
 - [babeljs](https://babeljs.io/docs/en)
 
 backend : [go lang](https://go.dev/learn/)
