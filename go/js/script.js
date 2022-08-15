@@ -1,11 +1,10 @@
 
-
 const Banner = () => {
     return (  
-    <section class="hero is-large-touch has-text-centered black has-text-white round">
-    <div class="hero-body">
-      <p class="title is-4 white">ratemyprofessors.help</p>
-      <p class="subtitle is-5 white">
+    <section className="hero is-large-touch has-text-centered black has-text-white round">
+    <div className="hero-body">
+      <p className="title is-4 white">ratemyprofessors.help</p>
+      <p className="subtitle is-5 white">
         A Rate My Professors Helper! beta
       </p>
     </div>
@@ -83,11 +82,11 @@ class Form extends React.Component {
 
   render() {
     return( 
-      <section class="columns is-mobile is-centered">
-        <div class="column is-one-quarter-desktop is-one-half-tablet">
-    <form class = "box" onSubmit={this.handleSubmit}>
+      <section className="columns is-mobile is-centered">
+        <div className="column is-one-quarter-desktop is-one-half-tablet">
+    <form className = "box" onSubmit={this.handleSubmit}>
        <select name="school" id="school" value={this.state.school} onChange={this.handleSchool}>
-        <option class="select-school" value="" disabled selected>Select School</option>
+        <option className="select-school" value="" disabled selected>Select School</option>
         <option value="De Anza">De Anza</option>
         {/* <option value="Berkeley">Berkeley</option> */}
     </select><br></br>
@@ -100,7 +99,24 @@ class Form extends React.Component {
     );
   }
 }
-
-
-ReactDOM.render(<Banner />, document.getElementById("home"));
-ReactDOM.render(<Form />, document.getElementById("form"));
+const Footer = () => {
+  return (  
+    <div className="black footer1">
+      <div className="content has-text-centered">
+        <p>
+          ratemyprofessors.help by Duy Nguyen and Raymond Lin. The source code is licensed under the
+           MIT license.
+        </p>
+      </div>
+    </div>);
+};
+// add container to root then render- updated for React 18
+const render1 = document.getElementById("home");
+const render2 = document.getElementById("form");
+const render3 = document.getElementById("footer");
+const root1 = ReactDOM.createRoot(render1);
+const root2 = ReactDOM.createRoot(render2);
+const root3 = ReactDOM.createRoot(render3);
+root1.render(<Banner />);
+root2.render(<Form />);
+root3.render(<Footer />);

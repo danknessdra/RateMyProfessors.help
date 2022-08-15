@@ -3,6 +3,9 @@ html {
 	font-family: 'Poppins', sans-serif !important;
 	background-color: #5186ef;
 }
+body {
+	min-height: 100%;
+}
 input[type=school], input[type=subject], select {
 	margin-top: 10px;
 	border:1px solid #9a9898;
@@ -48,4 +51,13 @@ input[type=school], input[type=subject], select {
 .newResult {
 	display: flex;
 	justify-content: space-between;
+  }
+  .footer1 {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding-top: 30px;
+  	padding-bottom: 30px;
+	background-color: #D0DAEE;
   }
