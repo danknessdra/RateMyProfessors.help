@@ -74,13 +74,8 @@ make install clean
 # technology stack
 
 frontend : [ __html__, __css__ , __javascript__ ]
-<<<<<<< HEAD
-- [__reactjs__](https://reactjs.org/docs/)
-- [__babeljs__](https://babeljs.io/docs/en)
-=======
 - [reactjs](https://reactjs.org/docs/)
 - [babeljs](https://babeljs.io/docs/en)
->>>>>>> parent of d54b95b... format
 
 backend : [__go lang__](https://go.dev/learn/)
 - [__http router docs__](https://pkg.go.dev/github.com/julienschmidt/httprouter)
