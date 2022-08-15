@@ -28,7 +28,7 @@ make install clean
 
 ### ubuntu 
 
-> Ubuntus go lang package is outdated, follow go lang website instructions
+> ubuntu's golang package is outdated, follow the golang doc instructions
 
 [go lang install](https://tip.golang.org/doc/install)
 
