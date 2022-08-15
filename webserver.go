@@ -23,7 +23,9 @@ func main() {
 	router.POST("/get_rank", getRank)
 	// router.GET("/get_courses", getCourses) API
 
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", router))
+	log.Fatal(http.ListenAndServe("127.0.0.1:8080", router))
+	// log.Fatal(http.ListenAndServeTLS("127.0.0.1:8080", "ratemyprofessor.crt", "ratemyprofessor.key", router))
+
 }
 
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
