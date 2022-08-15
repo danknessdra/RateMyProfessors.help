@@ -75,15 +75,15 @@ make install clean
 
 frontend : [ __html__, __css__ , __javascript__ ]
 - [__reactjs__](https://reactjs.org/docs/)
-- [babeljs](https://babeljs.io/docs/en)
+- [__babeljs__](https://babeljs.io/docs/en)
 
-backend : [go lang](https://go.dev/learn/)
-- [http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
+backend : [__go lang__](https://go.dev/learn/)
+- [__http router docs__](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
-webscraping : [python](https://docs.python.org/3/)
-- [ratemyprofessorapi](https://pypi.org/project/RateMyProfessorAPI/)
-- [beautifulsoup](https://pypi.org/project/beautifulsoup4/)
+webscraping : [__python__](https://docs.python.org/3/)
+- [__ratemyprofessorapi__](https://pypi.org/project/RateMyProfessorAPI/)
+- [__beautifulsoup__](https://pypi.org/project/beautifulsoup4/)
 
-reverse proxy : [relayd](https://man.openbsd.org/relayd.8)
+reverse proxy : [__relayd__](https://man.openbsd.org/relayd.8)
 
-tls : [acme-client](https://man.openbsd.org/acme-client.1)
+tls : [__acme-client__](https://man.openbsd.org/acme-client.1)
