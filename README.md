@@ -39,7 +39,6 @@ sudo apt-get install python3 python3-pip
 
 ## go dependencies
 
-[http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
 ```
 go get github.com/julienschmidt/httprouter
@@ -74,12 +73,17 @@ make install clean
 
 # technology stack
 
-frontend: [ __html__, __css__ , __javascript__ ]
+frontend : [ __html__, __css__ , __javascript__ ]
+- [reactjs](https://reactjs.org/docs/)
+- [babeljs](https://babeljs.io/docs/en)
 
-backend: [go lang](https://go.dev/learn/)
+backend : [go lang](https://go.dev/learn/)
+- [http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
-webscraping: [python](https://docs.python.org/3/)
+webscraping : [python](https://docs.python.org/3/)
+- [ratemyprofessorapi](https://pypi.org/project/RateMyProfessorAPI/)
+- [beautifulsoup](https://pypi.org/project/beautifulsoup4/)
 
-reverse proxy: [relayd](https://man.openbsd.org/relayd.8)
+reverse proxy : [relayd](https://man.openbsd.org/relayd.8)
 
-tls: [acme-client](https://man.openbsd.org/acme-client.1)
+tls : [acme-client](https://man.openbsd.org/acme-client.1)
