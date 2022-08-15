@@ -74,7 +74,7 @@ make install clean
 
 # technology stack
 
-frontend: [ *html*, *css*, *javascript* ]
+frontend: [ __html__, __css__ , __javascript__ ]
 
 backend: [go lang](https://go.dev/learn/)
 
