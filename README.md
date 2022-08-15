@@ -5,11 +5,35 @@
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
-# dependencies
+# development dependencies
 
 - [golang](https://go.dev/)
 - [python](https://www.python.org/)
 - [python pip](https://github.com/pypa/pip)
+
+## openbsd dependencies
+
+[openbsd ports tree](https://www.openbsd.org/faq/ports/ports.html)
+```
+pkg_add python3
+
+# needs the ports tree to compile binaries
+cd /usr/ports/devel/py-pip/
+make install clean
+
+cd /usr/ports/lang/go/
+make install clean
+```
+
+## ubuntu dependencies
+
+> Ubuntus go lang package is outdated
+[go lang install](https://tip.golang.org/doc/install)
+
+```
+sudo apt-get install python3 python3-pip 
+```
+
 
 ## go dependencies
 
@@ -25,6 +49,7 @@ go get github.com/julienschmidt/httprouter
 pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI
 ```
 
+
 # deployment 
 
 ## openbsd 
@@ -34,14 +59,10 @@ pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI
 ```
 ln -s '/usr/local/bin/python3' '/bin/python3'
 
-pkg_add python3
-
 # need the ports tree to install
 cd /usr/ports/lang/go/
 make install clean
 
-cd /usr/ports/devel/py-pip/
-make install clean
 ```
 
 # development workflow
