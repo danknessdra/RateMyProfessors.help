@@ -78,10 +78,10 @@ __frontend__ : [ html, css , javascript ]
 - [babeljs](https://babeljs.io/docs/en)
 
 __backend__ : [go lang](https://go.dev/learn/)
-- [http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
+- [julienschmidt/httprouter](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
 __webscraping__ : [python](https://docs.python.org/3/)
-- [ratemyprofessorapi](https://pypi.org/project/RateMyProfessorAPI/)
+- [RateMyProfessorAPI](https://pypi.org/project/RateMyProfessorAPI/)
 - [beautifulsoup](https://pypi.org/project/beautifulsoup4/)
 
 __reverse proxy__ : [relayd](https://man.openbsd.org/relayd.8)
