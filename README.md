@@ -73,17 +73,17 @@ make install clean
 
 # technology stack
 
-frontend : [ __html__, __css__ , __javascript__ ]
+__frontend__ : [ html, css , javascript ]
 - [reactjs](https://reactjs.org/docs/)
 - [babeljs](https://babeljs.io/docs/en)
 
-backend : [__go lang__](https://go.dev/learn/)
-- [__http router docs__](https://pkg.go.dev/github.com/julienschmidt/httprouter)
+__backend__ : [go lang](https://go.dev/learn/)
+- [http router docs](https://pkg.go.dev/github.com/julienschmidt/httprouter)
 
-webscraping : [__python__](https://docs.python.org/3/)
-- [__ratemyprofessorapi__](https://pypi.org/project/RateMyProfessorAPI/)
-- [__beautifulsoup__](https://pypi.org/project/beautifulsoup4/)
+__webscraping__ : [python](https://docs.python.org/3/)
+- [ratemyprofessorapi](https://pypi.org/project/RateMyProfessorAPI/)
+- [beautifulsoup](https://pypi.org/project/beautifulsoup4/)
 
-reverse proxy : [__relayd__](https://man.openbsd.org/relayd.8)
+__reverse proxy__ : [relayd](https://man.openbsd.org/relayd.8)
 
-tls : [__acme-client__](https://man.openbsd.org/acme-client.1)
+__tls__ : [acme-client](https://man.openbsd.org/acme-client.1)
