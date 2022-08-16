@@ -5,7 +5,7 @@ const Banner = () => {
     className: "hero-body"
   }, /*#__PURE__*/React.createElement("p", {
     className: "title is-4 white"
-  }, "ratemyprofessors.help"), /*#__PURE__*/React.createElement("p", {
+  }, "RateMyProfessors.help"), /*#__PURE__*/React.createElement("p", {
     className: "subtitle is-5 white"
   }, "A Rate My Professors Helper! beta")));
 };
@@ -129,7 +129,7 @@ const Footer = () => {
     className: "black footer1"
   }, /*#__PURE__*/React.createElement("div", {
     className: "content has-text-centered"
-  }, /*#__PURE__*/React.createElement("p", null, "ratemyprofessors.help by Duy Nguyen and Raymond Lin. The source code is licensed under the MIT license.")));
+  }, /*#__PURE__*/React.createElement("p", null, "RateMyProfessors.help by Duy Nguyen and Raymond Lin. The source code is licensed under the MIT license.")));
 }; // add container to root then render- updated for React 18
 
 

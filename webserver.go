@@ -24,6 +24,7 @@ func main() {
 	// router.GET("/get_courses", getCourses) API
 
 	log.Fatal(http.ListenAndServe("127.0.0.1:8080", router))
+
 	// UNCOMMENT THIS AND COMMENT ABOVE TO GET TLS WORKING
 	// log.Fatal(http.ListenAndServeTLS("127.0.0.1:8080", "/etc/sslratemyprofessor.crt", "/etc/ssl/private/ratemyprofessor.key", router))
 

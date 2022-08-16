@@ -11,7 +11,6 @@ import (
 )
 
 // return ranking of courses based off school, and course name
-
 // first return courses that contain course name
 
 type Course struct {
@@ -42,6 +41,7 @@ os.open school json
 if err != nil
 return N/A to webserver
 */
+
 func GetJson(file string) []Course {
 
 	jsonFile, err := os.Open(file)
@@ -74,7 +74,6 @@ func (a ByRanking) Len() int      { return len(a) }
 func (a ByRanking) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 // make it rank if ranks are equal, compare number of ratins
-//
 func (a ByRanking) Less(i, j int) bool { return a[i].Rating > a[j].Rating }
 
 func GetRanked(courses []Course, input string) []Course {
