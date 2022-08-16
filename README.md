@@ -64,7 +64,15 @@ ln -s '/usr/local/bin/python3' '/bin/python3'
 cd /usr/ports/lang/go/
 make install clean
 
+git clone <repository>
+
+
 ```
+
+### resources
+[generating certs](https://libredd.it/r/openbsd/comments/wotu2v/solved_unable_to_generate_a_crt_with_acmeclient/ikgtwuv/?context=3)
+[relayd](https://gist.github.com/anon987654321/4532cf8d6c59c1f43ec8973faa031103)
+
 
 # development workflow
 1. create issue for problem working on
