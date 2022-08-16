@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins');
 html {
 	font-family: 'Poppins', sans-serif !important;
-	background-color: #5186ef;
+	background-color: white ;
 }
 body {
 	min-height: 100%;
@@ -61,3 +61,16 @@ input[type=school], input[type=subject], select {
   	padding-bottom: 30px;
 	background-color: #D0DAEE;
   }
+
+.title {
+	text-decoration: underline;     
+}
+
+.subtitle {
+	padding-top: .5em;
+}
+
+.hero-body {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}

@@ -7,7 +7,7 @@ const Banner = () => {
     className: "title is-4 white"
   }, "RateMyProfessors.help"), /*#__PURE__*/React.createElement("p", {
     className: "subtitle is-5 white"
-  }, "A Rate My Professors Helper! beta")));
+  }, "A Rate My Professors Helper! (beta)")));
 };
 
 class Form extends React.Component {
