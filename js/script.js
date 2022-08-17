@@ -36,7 +36,7 @@ class Form extends React.Component {
   handleSubmit(event) {
     let data = {
       School: this.state.school,
-      Course: this.state.course
+      Course: this.state.course.toUpperCase()
     };
     fetch("/get_rank", {
       headers: {
@@ -49,9 +49,23 @@ class Form extends React.Component {
       response.text().then(function (data) {
         let result = JSON.parse(data);
         // console.log(result);
+        if (result===null) {
+          Swal.fire({
+            title: 'Invalid Input!',
+            text: 'Please ensure that your course or school is in the correct format.',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            },
+            confirmButtonColor: '#5186ef',
+            confirmButtonText: 'Ok!',
+          })
+        }
+        else {
         let title = result[0].course;
         let htmlString = '';
-
         for (let i = 0; i < result.length; ++i) {
           htmlString += `<section class = "box">
                 <div class="newResult">
@@ -79,11 +93,12 @@ class Form extends React.Component {
           confirmButtonColor: '#5186ef',
           confirmButtonText: 'Ok!',
           confirmButtonAriaLabel: 'Thumbs up, great!'
-        });
+        });}
       });
     }).catch(error => {
       console.log(error);
     });
+    
     event.preventDefault();
   }
 
