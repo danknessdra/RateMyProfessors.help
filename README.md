@@ -1,9 +1,9 @@
 # RateMyProfessors.help
-> The RateMyMrofessor helper to help find the best professors for your courses
+> The RateMyProfessor helper to help find the best professors for your courses
 
-[ratemyprofessors.help](https://ratemyprofessors.help)
+[RateMyProfessors.help](https://ratemyprofessors.help)
 
-Finds the best teacher for your courses using [RateMyProfessors](https://ratemyprofessors.com) to rank the best teacher for your specified course.
+Finds the best teacher for your courses using [RateMyProfessors.com](https://ratemyprofessors.com) to rank the best teacher for your specified course.
 
 # development dependencies
 
