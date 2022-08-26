@@ -1,13 +1,15 @@
 # RateMyProfessors.help
 > one line summary: rate my professor helper to help find the best professors for your courses
 
-> more detailed description
+[ratemyprofessors.help](https://ratemyprofessors.help)
+
+Finds the best teacher for your courses using [RateMyProfessors](https://ratemyprofessors.com) to rank the best teacher for your specified course.
 
 [design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
 # development dependencies
 
-- [golang](https://go.dev/)
+- [golang 1.17-7](https://go.dev/)
 - [python](https://www.python.org/)
 - [python pip](https://github.com/pypa/pip)
 
@@ -65,14 +67,23 @@ cd /usr/ports/lang/go/
 make install clean
 
 git clone <repository>
-
-
+cd <repository>
+go build
+./webserver
 ```
 
-### resources
-[generating certs](https://libredd.it/r/openbsd/comments/wotu2v/solved_unable_to_generate_a_crt_with_acmeclient/ikgtwuv/?context=3)
-[relayd](https://gist.github.com/anon987654321/4532cf8d6c59c1f43ec8973faa031103)
+for setting up tls with httpd, relayd, and acme-client view ./examples
 
+man pages
+```
+man httpd
+man relayd
+man acme-client
+```
+
+[generating certs](https://libredd.it/r/openbsd/comments/wotu2v/solved_unable_to_generate_a_crt_with_acmeclient/ikgtwuv/?context=3)
+
+[relayd](https://gist.github.com/anon987654321/4532cf8d6c59c1f43ec8973faa031103)
 
 # development workflow
 1. create issue for problem working on
@@ -96,3 +107,4 @@ __reverse proxy__ : [relayd](https://man.openbsd.org/relayd.8)
 
 __tls__ : [ [acme-client](https://man.openbsd.org/acme-client.1) , [httpd](https://man.openbsd.org/httpd.8) ]
 
+__ci/cd__: [jenkins](jenkins.io)
