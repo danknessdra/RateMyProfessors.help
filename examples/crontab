@@ -1,0 +1,4 @@
+# example crontab listing
+# man 1 crontab
+# man 5 crontab
+@daily pg_dump <mydb> <mydb>-$(date "+%d-%m-%Y-%H:%M:%S"
