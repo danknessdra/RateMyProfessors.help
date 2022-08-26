@@ -1,11 +1,9 @@
 # RateMyProfessors.help
-> one line summary: rate my professor helper to help find the best professors for your courses
+> The RateMyMrofessor helper to help find the best professors for your courses
 
 [ratemyprofessors.help](https://ratemyprofessors.help)
 
 Finds the best teacher for your courses using [RateMyProfessors](https://ratemyprofessors.com) to rank the best teacher for your specified course.
-
-[design doc](https://docs.google.com/document/d/18EV5vSysP4g-dQlOz8RPAOX1CN95_Bku6ngtJE6O48w/edit#heading=h.ng2zz6cp2tz0)
 
 # development dependencies
 
@@ -55,6 +53,8 @@ pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI
 
 # deployment 
 
+website is deployed using openbsd so there is no documentation at the moment or any documentation planned in the future using linux.
+
 ## openbsd 
 
 [openbsd ports tree](https://www.openbsd.org/faq/ports/ports.html)
@@ -74,12 +74,15 @@ go build
 
 for setting up tls with httpd, relayd, and acme-client view ./examples
 
-man pages
+### relevant man pages
+
 ```
 man httpd
 man relayd
 man acme-client
 ```
+
+### resources
 
 [generating certs](https://libredd.it/r/openbsd/comments/wotu2v/solved_unable_to_generate_a_crt_with_acmeclient/ikgtwuv/?context=3)
 
