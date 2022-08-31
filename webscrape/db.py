@@ -4,23 +4,34 @@ import os
 from dotenv import load_dotenv
 import psycopg2
 
-# make this use .env variables
 '''
-dbname=input("Enter db name: ")
-username=input("Enter user name: ")
-password=input("Enter password: ")
-conn = psycopg2.connect("dbname={0} user={1} password={2}".format(dbname, username, password))
+create/edit .env file (name has to be exactly ".env")
+sample config:
+
+DB_NAME="testdb"
+DB_USERNAME="test"
+DB_PASSWORD="password"
 '''
 
 load_dotenv()
 
-DB_NAME = os.getenv('DB_NAME')
-USERNAME = os.getenv('DB_USERNAME')
-PASSWORD = os.getenv('DB_PASSWORD')
+dbname = os.getenv('DB_NAME')
+user = os.getenv('DB_USERNAME')
+password = os.getenv('DB_PASSWORD')
 
-print(DB_NAME)
-print(DB_USERNAME)
-conn = psycopg2.connect("dbname={0} user={1} password={2}".format(DB_NAME, DB_USERNAME, DB_PASSWORD))
+conn = psycopg2.connect("dbname={0} user={1} password={2}".format(dbname, user, password))
 
+cur = conn.cursor()
 
+#cur.execute("CREATE TABLE test (num integer);")
+cur.execute("DROP TABLE test")
+cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
+cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)", (100, "abc'def"))
+#cu.execute("INSERT INTO test (num) VALUES (3);")
+cur.execute("SELECT * FROM test;")
+print(cur.fetchone())
+
+conn.commit()
+
+cur.close()
 conn.close()
