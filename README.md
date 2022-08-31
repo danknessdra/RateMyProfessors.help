@@ -60,8 +60,6 @@ website is deployed using openbsd so there is no documentation at the moment or 
 [openbsd ports tree](https://www.openbsd.org/faq/ports/ports.html)
 
 ```
-ln -s '/usr/local/bin/python3' '/bin/python3'
-
 # need the ports tree to install
 cd /usr/ports/lang/go/
 make install clean
