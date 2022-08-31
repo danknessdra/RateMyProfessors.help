@@ -47,7 +47,7 @@ go get github.com/julienschmidt/httprouter
 ## python dependencies
 
 ```
-pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI
+pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI psycopg2 python-dotenv
 ```
 
 
