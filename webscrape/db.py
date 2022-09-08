@@ -25,8 +25,7 @@ conn = psycopg2.connect("dbname={0} user={1} password={2} host={3}".format(dbnam
 cur = conn.cursor()
 
 #cur.execute("CREATE TABLE test (num integer);")
-cur.execute("DROP TABLE test")
-cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
+#cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
 cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)", (100, "abc'def"))
 #cu.execute("INSERT INTO test (num) VALUES (3);")
 cur.execute("SELECT * FROM test;")
