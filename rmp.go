@@ -23,7 +23,7 @@ func main() {
 	router.POST("/get_rank", getRank)
 	// router.GET("/get_courses", getCourses) API
 
-	err := http.ListenAndServeTLS("127.0.0.1:8080", "/etc/ssl/ratemyprofessor.crt", "/etc/ssl/private/ratemyprofessor.key", router)
+	err := http.ListenAndServeTLS("127.0.0.1:8080", "/etc/ssl/ratemyprofessors.crt", "/etc/ssl/private/ratemyprofessors.key", router)
 
 	if err != nil {
 		fmt.Println(err)
