@@ -18,8 +18,9 @@ load_dotenv()
 dbname = os.getenv('DB_NAME')
 user = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
+host = os.getenv('HOST')
 
-conn = psycopg2.connect("dbname={0} user={1} password={2}".format(dbname, user, password))
+conn = psycopg2.connect("dbname={0} user={1} password={2} host={3}".format(dbname, user, password, host))
 
 cur = conn.cursor()
 
