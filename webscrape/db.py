@@ -38,11 +38,15 @@ size (# of ratings)
 
 there should be a different functions based off for writing, follow how jellyfin updates metadata
 
-refresh function: overwrites/refreshes all data
-update function: only gets new entries
-update function overload: only checks/updates certain parameters
+function: (function time)
+> webscraping is much faster than getting data from rmp api (* means all data)
 
-getting data takes long time with RateMyProfessors api so update function should be much faster than refresh
+refresh function: overwrites/refreshes all data (webscrape * + rmp api *)
+get function: only gets new entries, doesnt overwrite current entries (webscrape * + rmp api (newdata) )
+update function: only updates current data (rmp api (current data) || webscrape (current data))
+
+> either update ratings, or update professor data like maybe timings in the future
+> could be a cron task, where every week webscrape data is updated, and rmp data updated only every quarter 
 '''
 
 # if var char size is not enough: https://stackoverflow.com/questions/22668024/how-to-change-column-size-of-varchar-type-in-mysql
@@ -56,14 +60,35 @@ cur.execute("CREATE TABLE IF NOT EXISTS courses ( \
         size    int \
         );")
 
-# where not exists: https://stackoverflow.com/questions/5288283/sql-server-insert-if-not-exists-best-practice
-cur.execute("INSERT courses \
-        SELECT DISTINCT name \
-        FROM (name, department, course, prof, difficulty, size) \
+'''
+insert if not exists
+https://www.postgresql.org/docs/current/sql-insert.html
+
+ Im not sure if this is really better than official postgresql documentation (where not exists): https://stackoverflow.com/questions/5288283/sql-server-insert-if-not-exists-best-practice
+
+do we even need this for our functions for overriding we dont need it, for updating, we should be first be comparing
+ the webscrape entry to the database
+
+'get function: only gets new entries, doesnt overwrite current entries (webscrape * + rmp api (newdata) )'
+if course is not in SQL database: run api, insert into db (the check is already happening in python, no need
+for sql to check with if not)
+
+'update function: only updates current data (rmp api (current data) || webscrape (current data))'
+UPDATE SQL function
+
+on conflict will not work without a index in the table, however we are checking for a string tho
+cur.execute("INSERT into courses (name, department, course, prof, difficulty, size) \
+        VALUES ('CALC 1C', 'CALC', '1C', 'RICK', 3.2, 10) \
+        ON CONFLICT (name) DO NOTHING;")
+'''
+
+cur.execute("INSERT into courses (name, department, course, prof, difficulty, size) \
         VALUES ('CALC 1C', 'CALC', '1C', 'RICK', 3.2, 10);")
 
 cur.execute("SELECT * FROM courses;")
-cur.execute("SELECT * FROM courses;")
+print(cur.fetchall())
+print("DISTINCT")
+cur.execute("SELECT DISTINCT ON (name) * FROM courses;")
 print(cur.fetchall())
 
 # TEST
