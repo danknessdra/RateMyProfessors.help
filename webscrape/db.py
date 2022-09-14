@@ -15,16 +15,37 @@ DB_PASSWORD="password"
 '''
 
 # AUTHENTICATION
-load_dotenv()
+class db:
 
-dbname = os.getenv('DB_NAME')
-user = os.getenv('DB_USERNAME')
-password = os.getenv('DB_PASSWORD')
-host = os.getenv('HOST')
+    def __init__(self):
+        load_dotenv()
+        self.dbname = os.getenv('DB_NAME')
+        self.user = os.getenv('DB_USERNAME')
+        self.password = os.getenv('DB_PASSWORD')
+        self.host = os.getenv('HOST')
+    
+    def connect(self):
+        self.conn = psycopg2.connect("dbname={0} user={1} password={2} host={3}".format(self.dbname, self.user, self.password, self.host))
+        self.cur = self.conn.cursor()
+        
+        self.cur.execute("CREATE TABLE IF NOT EXISTS courses ( \
+                name    varchar(10), \
+                department  varchar(5), \
+                course  varchar(5), \
+                prof    varchar(30), \
+                difficulty  real, \
+                size    int \
+                );")
+    def insert(self)
+    
+    def close(self):
+        self.conn.commit()
+        self.cur.close()
+        self.conn.close()
 
-conn = psycopg2.connect("dbname={0} user={1} password={2} host={3}".format(dbname, user, password, host))
-
-cur = conn.cursor()
+DB = db()
+DB.connect()
+DB.close()
 
 '''
 DESIGN
@@ -51,14 +72,6 @@ update function: only updates current data (rmp api (current data) || webscrape 
 
 # if var char size is not enough: https://stackoverflow.com/questions/22668024/how-to-change-column-size-of-varchar-type-in-mysql
 # EOL format: https://stackoverflow.com/questions/59387001/mysql-command-in-python-yields-syntaxerror-eol-while-scanning-string-literal
-cur.execute("CREATE TABLE IF NOT EXISTS courses ( \
-        name    varchar(10), \
-        department  varchar(5), \
-        course  varchar(5), \
-        prof    varchar(30), \
-        difficulty  real, \
-        size    int \
-        );")
 
 '''
 insert if not exists
@@ -82,23 +95,25 @@ cur.execute("INSERT into courses (name, department, course, prof, difficulty, si
         ON CONFLICT (name) DO NOTHING;")
 '''
 
+'''
 cur.execute("INSERT into courses (name, department, course, prof, difficulty, size) \
         VALUES ('CALC 1C', 'CALC', '1C', 'RICK', 3.2, 10);")
+        '''
 
+'''
 cur.execute("SELECT * FROM courses;")
 print(cur.fetchall())
 print("DISTINCT")
 cur.execute("SELECT DISTINCT ON (name) * FROM courses;")
 print(cur.fetchall())
+'''
 
-# TEST
+'''
+TEST
 #cur.execute("CREATE TABLE IF NOT EXISTS test (id serial PRIMARY KEY, num integer, data varchar);")
 cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)", (100, "abc'def"))
 #cu.execute("INSERT INTO test (num) VALUES (3);")
 cur.execute("SELECT * FROM test;")
 print(cur.fetchone())
+'''
 
-conn.commit()
-
-cur.close()
-conn.close()
