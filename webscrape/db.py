@@ -14,10 +14,10 @@ DB_USERNAME="test"
 DB_PASSWORD="password"
 '''
 
-# AUTHENTICATION
 class db:
 
     def __init__(self):
+        # AUTHENTICATION
         load_dotenv()
         self.dbname = os.getenv('DB_NAME')
         self.user = os.getenv('DB_USERNAME')
@@ -36,16 +36,24 @@ class db:
                 difficulty  real, \
                 size    int \
                 );")
-    def insert(self)
+    def execute(self, command):
+        self.cur.execute(command)
     
     def close(self):
         self.conn.commit()
         self.cur.close()
         self.conn.close()
 
+
 DB = db()
 DB.connect()
+DB.execute("SELECT * FROM courses;")
+print(DB.cur.fetchall())
 DB.close()
+
+''' 
+DONT DELETE THIS, THIS IS FOR REST OF MAN DOCUMENTATION FOR LATER
+'''
 
 '''
 DESIGN
