@@ -44,12 +44,14 @@ class db:
         self.cur.close()
         self.conn.close()
 
-
+'''
+EXAMPLE
 DB = db()
 DB.connect()
 DB.execute("SELECT * FROM courses;")
 print(DB.cur.fetchall())
 DB.close()
+'''
 
 ''' 
 DONT DELETE THIS, THIS IS FOR REST OF MAN DOCUMENTATION FOR LATER

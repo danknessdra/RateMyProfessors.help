@@ -2,18 +2,15 @@
 
 ''' documentation
 https://beautiful-soup-4.readthedocs.io/en/latest/
-https://docs.python.org/3/library/json.html
 https://pypi.org/project/RateMyProfessorAPI/
 '''
 
 import requests
 from bs4 import BeautifulSoup
-import json
 import ratemyprofessor
 
 school = ratemyprofessor.get_school_by_name("De Anza College")
 
-json_file = open('../data/courses.json', 'w')
 departments = open('../data/departments.txt', 'r').read().splitlines()
 
 
@@ -77,6 +74,7 @@ for department in departments:
                 dictionary['size'] = professor.num_ratings
                 dictionary['difficulty'] = professor.difficulty
                 courses.append(dictionary)
+                print(dictionary)
             else:
                 print("N/A for {0} {1}".format(course, prof))
 
@@ -95,9 +93,7 @@ for department in departments:
 # without a huge run time
 
 courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
-json.dump([courses], json_file, sort_keys=True, indent=2)
-
-json_file.close()
+print(courses)
 
 print("FINISHED")
 print("FINISHED")
