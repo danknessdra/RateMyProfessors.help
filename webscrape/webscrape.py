@@ -9,6 +9,27 @@ import requests
 from bs4 import BeautifulSoup
 import ratemyprofessor
 
+# make this a interface or abstract class
+class Webscrape:
+
+    def __init__(self):
+        print("hi")
+
+# make a class called de anza which interfaces or inherits Webscrape
+'''
+if you want to make a quick solution, you can just make function and just copy
+paste below stuff and return a dictionary,,, then for i in dictionary, add
+properties to postgresql database
+
+for future, you can make seperate functions where, you return seperately the
+teacher info from college website, and return seperately the rate my professor
+statistics, by using data from postgresql database if we do this, I am afraid
+that the line below which removes duplicate courses will not work since it
+relies on a dictionary of all the courses, but we can figure that out later on 
+
+'''
+
+
 school = ratemyprofessor.get_school_by_name("De Anza College")
 
 departments = open('../data/departments.txt', 'r').read().splitlines()
@@ -79,12 +100,9 @@ for department in departments:
                 print("N/A for {0} {1}".format(course, prof))
 
         #print(courses)
-
             #print(json.dumps({'department': department, 'course': course, 'prof': prof}, sort_keys=True, indent=4))
     #print(dict)
     
-# remove duplicate courses
-
 # we should convert this so it does updates instead of overwriting each time
 # script takes too long to run
 # if having to run again, risks losing data
@@ -92,6 +110,7 @@ for department in departments:
 # converting based off a database model: still questions, how do we check if entry is there
 # without a huge run time
 
+# removes duplicate courses,,, I forgot why the above code creates duplicte courses
 courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
 print(courses)
 

@@ -14,7 +14,7 @@ DB_USERNAME="test"
 DB_PASSWORD="password"
 '''
 
-class db:
+class Db:
 
     def __init__(self):
         # AUTHENTICATION
@@ -28,29 +28,43 @@ class db:
         self.conn = psycopg2.connect("dbname={0} user={1} password={2} host={3}".format(self.dbname, self.user, self.password, self.host))
         self.cur = self.conn.cursor()
         
-        self.cur.execute("CREATE TABLE IF NOT EXISTS courses ( \
+    def create_table(self, school: str):
+
+    # https://stackoverflow.com/questions/19812597/postgresql-string-escaping-settings
+    # https://stackoverflow.com/questions/41396195/what-is-the-difference-between-single-quotes-and-double-quotes-in-postgresql
+    # backticks will not work
+    # table name should use underscore, but uses double quotes in case
+        cmd = "CREATE TABLE IF NOT EXISTS \"{0}\" ( \
                 name    varchar(10), \
                 department  varchar(5), \
                 course  varchar(5), \
                 prof    varchar(30), \
                 difficulty  real, \
                 size    int \
-                );")
-    def execute(self, command):
-        self.cur.execute(command)
+                );".format(school)
+
+        self.cur.execute(cmd)
+    def execute(self, cmd):
+        self.cur.execute(cmd)
     
     def close(self):
         self.conn.commit()
         self.cur.close()
         self.conn.close()
 
+db = Db()
+db.connect()
+db.create_table("de_anza")
+db.execute("SELECT * FROM \"de_anza\";")
+print(db.cur.fetchall())
+db.close()
 '''
 EXAMPLE
-DB = db()
-DB.connect()
-DB.execute("SELECT * FROM courses;")
-print(DB.cur.fetchall())
-DB.close()
+db = Db()
+db.connect()
+db.execute("SELECT * FROM courses;")
+print(db.cur.fetchall())
+db.close()
 '''
 
 ''' 
@@ -59,7 +73,7 @@ DONT DELETE THIS, THIS IS FOR REST OF MAN DOCUMENTATION FOR LATER
 
 '''
 DESIGN
-TABLE: courses
+TABLE: college_name (de anza)
 course name (PHYS 4A)
 department (PHYS)
 course number (4A)
