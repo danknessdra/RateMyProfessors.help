@@ -72,12 +72,20 @@ go build
 
 for setting up tls with httpd, relayd, and acme-client view ./examples
 
-### relevant man pages
+### security practices
+
+create a service user and service group with own dir in /var (`_rmp`)
+have rc.d service run as service user
+
+for ssl support, create ssl-cert group chown keys/certs
+add service user to group
+
+for postgresql, follow pkg-readme for best practice
+
+### SEE ALSO
 
 ```
-man httpd
-man relayd
-man acme-client
+httpd(8), httpd.conf(5), acme-client(1), relayd(8), relayd.conf(5)
 ```
 
 ### resources
