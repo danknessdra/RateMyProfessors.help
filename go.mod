@@ -1,4 +1,4 @@
-module course/webserver
+module ratemyprofessors.help/rmp
 
 go 1.17
 
