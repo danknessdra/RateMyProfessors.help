@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import ratemyprofessor
 import json
 from time import sleep
-school = ratemyprofessor.get_school_by_name("University of California Berkeley")
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.991"
 }
@@ -30,10 +29,9 @@ for result in results:
             course = None
         dictionary = {}
         if(prof and course):
-            print(prof)
-            print(course)
-            professor = ratemyprofessor.get_professor_by_school_and_name(school,prof)
+            professor = ratemyprofessor.get_professor_by_id_and_name(1072,prof.replace("  "," "))
             if professor is not None:
+                count = count + 1
                 dictionary['department'] = course.split()[0]
                 dictionary['course'] = course
                 dictionary['prof'] = prof
