@@ -52,7 +52,7 @@ class Form extends React.Component {
         if (result===null) {
           Swal.fire({
             title: 'Invalid Input!',
-            text: 'Please ensure that your course or school is in the correct format.',
+            text: 'Please ensure that your course or school is in the correct format. If it is, contact @bobo#0007 on discord!',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
@@ -123,14 +123,14 @@ class Form extends React.Component {
     }, "Select School"), /*#__PURE__*/React.createElement("option", {
       value: "De Anza"
     }, "De Anza"), /*#__PURE__*/React.createElement("option", {
-      value: "University Of California, Berkeley"
+      value: "UC Berkeley"
     }, "UC Berkeley")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       type: "subject",
       name: "subject",
       id: "subject",
       value: this.state.course,
       onChange: this.handleCourse,
-      placeholder: "Format: Course and ID I.E CS 46B",
+      placeholder: "Format: Course and ID I.E COMPSCI 61A",
       required: true
     }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       type: "submit",

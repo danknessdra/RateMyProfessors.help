@@ -35,17 +35,20 @@ func main() {
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	var data InputCall
 	err := json.NewDecoder(request.Body).Decode(&data)
+	ranked := GetRanked(GetJson("./data/DeAnzaCourses.json"), data.Course)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
-	ranked := GetRanked(GetJson("./data/courses.json"), data.Course)
+	if data.School == "UC Berkeley" {
+		ranked = GetRanked(GetJson("./data/BerkeleyCourses.json"), data.Course)
+	}
 	writer.Header().Set("Content-Type", "application/json")
 	_ = json.NewEncoder(writer).Encode(ranked)
 }
 
 func getCourses(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
-	ranked := GetJson("./data/courses.json")
+	ranked := GetJson("./data/DeAnzaCourses.json")
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(http.StatusCreated)
 	_ = json.NewEncoder(writer).Encode(ranked)
