@@ -123,7 +123,7 @@ class Form extends React.Component {
     }, "Select School"), /*#__PURE__*/React.createElement("option", {
       value: "De Anza"
     }, "De Anza"), /*#__PURE__*/React.createElement("option", {
-      value: "UC Berkeley"
+      value: "University Of California, Berkeley"
     }, "UC Berkeley")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       type: "subject",
       name: "subject",
