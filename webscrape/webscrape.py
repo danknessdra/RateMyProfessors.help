@@ -110,7 +110,7 @@ for department in departments:
 # converting based off a database model: still questions, how do we check if entry is there
 # without a huge run time
 
-# removes duplicate courses,,, I forgot why the above code creates duplicte courses
+# removes duplicate courses, bc of multiple sections being taught my same professor
 courses = [dict(tupleized) for tupleized in set(tuple(item.items()) for item in courses)]
 print(courses)
 
