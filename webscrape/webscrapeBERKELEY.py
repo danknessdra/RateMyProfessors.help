@@ -45,12 +45,13 @@ for result in results:
                 totalData.append(dictionary)
 # leading iterations
 
-for page in range(1,3):
+for page in range(1,332):
+    sleep(1.5)
     request=requests.get('https://classes.berkeley.edu/search/class?page=' + str(page) + '&f%5B0%5D=ts_course_level%3Agrad&f%5B1%5D=im_field_term_name%3A2729&f%5B2%5D=ts_course_level%3Alow&f%5B3%5D=ts_course_level%3Aup', headers=headers)
     berksoup = BeautifulSoup(request.content,'html.parser')
     results = berksoup.find_all('li', class_="search-result")
     for result in results:
-        sleep(0.12)
+        sleep(1.5)
         data = result.find("div", {"class" : regex})
         if (data):
             try:
