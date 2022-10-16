@@ -52,7 +52,7 @@ class Form extends React.Component {
         if (result===null) {
           Swal.fire({
             title: 'Invalid Input!',
-            text: `Please ensure that your course is in the correct format. \nIf it is, your professors probably aren't on RMP >.<`,
+            text: `Please ensure that your course is in the correct format (what it looks like on the school website). \nIf it is, your professors probably aren't on RMP >.<`,
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
