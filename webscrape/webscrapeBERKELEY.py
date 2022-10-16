@@ -46,6 +46,7 @@ for result in results:
 # leading iterations
 
 for page in range(1,332):
+    print(page)
     sleep(1.5)
     request=requests.get('https://classes.berkeley.edu/search/class?page=' + str(page) + '&f%5B0%5D=ts_course_level%3Agrad&f%5B1%5D=im_field_term_name%3A2729&f%5B2%5D=ts_course_level%3Alow&f%5B3%5D=ts_course_level%3Aup', headers=headers)
     berksoup = BeautifulSoup(request.content,'html.parser')
