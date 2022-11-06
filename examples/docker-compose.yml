@@ -1,0 +1,5 @@
+services:
+        rmp:
+                image: punkmeister/ratemyprofessors.help
+                ports: 
+                        - "8080:8080"

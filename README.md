@@ -53,7 +53,12 @@ pip install "requests==2.25.1" beautifulsoup4 RateMyProfessorAPI psycopg2 python
 
 # deployment 
 
-website is deployed using openbsd so there is no documentation at the moment or any documentation planned in the future using linux.
+## linux (docker) 
+
+1. install docker
+2. setup docker-compose.yml "./examples/docker-compose.yml"
+3. docker-compose up -d
+
 
 ## openbsd 
 
