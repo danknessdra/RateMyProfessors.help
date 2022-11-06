@@ -18,3 +18,4 @@ jobs:
       run: |
               DATE="$(date +%s)"
               docker build . --file Dockerfile --tag danknessdra/ratemyprofessors.help:"$DATE"
+              docker push danknessdra/ratemyprofessors.help:"$DATE"
