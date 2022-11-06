@@ -17,4 +17,3 @@ jobs:
     - name: Build the Docker image
     - run: DATE=$(date +%s)
     - run: docker build . --file Dockerfile --tag danknessdra/ratemyprofessors.help:"$(DATE)"
-      #    - run: docker push danknessdra/ratemyprofessors.help:"$(date)"
