@@ -23,13 +23,7 @@ func main() {
 	router.POST("/get_rank", getRank)
 	// router.GET("/get_courses", getCourses) API
 
-	err := http.ListenAndServeTLS(":8081", "/etc/ssl/ratemyprofessors.crt", "/etc/ssl/private/ratemyprofessors.key", router)
-
-	if err != nil {
-		fmt.Println(err)
-		fmt.Println("WARNING: using http instead of https")
-		log.Fatal(http.ListenAndServe(":8081", router))
-	}
+	http.ListenAndServe(":8081", router)
 }
 
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
