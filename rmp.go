@@ -23,7 +23,12 @@ func main() {
 	router.POST("/get_rank", getRank)
 	// router.GET("/get_courses", getCourses) API
 
-	http.ListenAndServe(":8081", router)
+	err := http.ListenAndServe(":80", router)
+
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("ERROR")
+	}
 }
 
 func getRank(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
